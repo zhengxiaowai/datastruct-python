@@ -45,7 +45,6 @@ class TestDoublyList(unittest.TestCase):
         self.assertIs(dl.tail, node0)
 
         dl.insert(0, node1) # node1 node0
-        # print(dl.values())
         self.assertEqual(len(dl), 2)
         self.assertIs(dl.head, node1)
         self.assertIsNone(dl.head.prev)
@@ -57,7 +56,6 @@ class TestDoublyList(unittest.TestCase):
         self.assertIs(dl.tail.prev.next, node0)
 
         dl.insert(2, node2) # node1 node0 node2
-        # print(dl.values())
         self.assertEqual(len(dl), 3)
         self.assertIs(dl.head, node1)
         self.assertIsNone(dl.tail.next)
@@ -67,7 +65,6 @@ class TestDoublyList(unittest.TestCase):
 
         dl.insert(2, node3)  # node1 node0 node3 node2
         self.assertEqual(len(dl), 4)
-        # print(dl.values())
         self.assertIs(dl.tail.prev, node3)
         self.assertIs(dl.tail.prev.next, node2)
         self.assertIs(dl.tail.prev.prev, node0)
