@@ -3,11 +3,16 @@
 
 
 def quick_sort(arr, recur=True):
+    if len(arr) == 0:
+        return arr
+
     quick_sort_iter(arr, 0, len(arr) - 1)
     if recur:
         quick_sort_recur(arr, 0, len(arr) - 1)
     else:
         quick_sort_iter(arr, 0, len(arr) - 1)
+
+    return arr
 
 
 def quick_sort_recur(arr, first, last):
@@ -68,9 +73,3 @@ def partition(arr, first, last):
     #         wall += 1
     # arr[wall], arr[last] = arr[last], arr[wall]
     # return wall
-
-
-if __name__ == '__main__':
-    arr = [5, 6, 6, 8, 1, 3, 7]
-    quick_sort(arr)
-    print(arr)
