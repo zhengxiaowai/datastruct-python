@@ -8,6 +8,7 @@ from datastruct.sort.selection import selection_sort
 from datastruct.sort.insertion import insertion_sort
 from datastruct.sort.shell import shell_sort
 from datastruct.sort.quick import quick_sort
+from datastruct.sort.merge import merge_sort
 
 
 class TestSort(unittest.TestCase):
@@ -43,3 +44,7 @@ class TestSort(unittest.TestCase):
         for case in self.table_test_cast:
             self.assertEqual(case[1], quick_sort(case[0]))
             self.assertEqual(case[1], quick_sort(case[0], True))
+
+    def test_merge_sort(self):
+        for case in self.table_test_cast:
+            self.assertEqual(case[1], merge_sort(case[0]))
