@@ -3,12 +3,13 @@
 
 import unittest
 
-from datastruct.sort.bubble import bubble_sort
-from datastruct.sort.selection import selection_sort
-from datastruct.sort.insertion import insertion_sort
-from datastruct.sort.shell import shell_sort
-from datastruct.sort.quick import quick_sort
-from datastruct.sort.merge import merge_sort
+from datastruct.sort import bubble_sort
+from datastruct.sort import selection_sort
+from datastruct.sort import insertion_sort
+from datastruct.sort import shell_sort
+from datastruct.sort import quick_sort
+from datastruct.sort import merge_sort
+from datastruct.sort import max_heap_sort
 
 
 class TestSort(unittest.TestCase):
@@ -48,3 +49,7 @@ class TestSort(unittest.TestCase):
     def test_merge_sort(self):
         for case in self.table_test_cast:
             self.assertEqual(case[1], merge_sort(case[0]))
+
+    def test_max_heap_sort(self):
+        for case in self.table_test_cast:
+            self.assertEqual(case[1], max_heap_sort(case[0]))
