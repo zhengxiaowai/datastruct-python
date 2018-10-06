@@ -75,3 +75,33 @@ class TestSList(unittest.TestCase):
         self.assertEqual(len(sl), 2)
         self.assertEqual(sl.head.value, 0)
         self.assertEqual(sl.head.next.value, 1)
+
+    def test_reversed_list(self):
+        sl = SinglyList([0, 1, 2, 3, 4])
+        reversed(sl)
+        self.assertEqual([4, 3, 2, 1, 0], sl.values())
+
+    def test_is_loop(self):
+        sl = SinglyList([0, 1, 2, 3, 4])
+        self.assertEqual(sl.is_loop(), False)
+
+        node1 = SNode(1)
+        node2 = SNode(2)
+        node3 = SNode(3)
+        node4 = SNode(4)
+        node5 = SNode(5)
+        node6 = SNode(6)
+
+        # make a loop
+        node1.next = node2
+        node2.next = node3
+        node3.next = node4
+        node4.next = node5
+        node5.next = node6
+        node6.next = node3
+
+        sl = SinglyList()
+        sl._head = node1
+        sl._length = 6
+
+        self.assertEqual(sl.is_loop(), True)

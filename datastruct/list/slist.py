@@ -31,7 +31,7 @@ class SinglyList:
 
     @property
     def head(self):
-        return  self._head
+        return self._head
 
     def __len__(self):
         return self._length
@@ -93,6 +93,29 @@ class SinglyList:
             prev_node.next = None
 
         self._length -= 1
+
+    def __reversed__(self):
+        list_head = self._head
+        result = None
+
+        while list_head:
+            temp = list_head.next
+            list_head.next = result
+            result = list_head
+            list_head = temp
+
+        self._head = result
+
+    def is_loop(self):
+        fast = self._head
+        slow = self.head
+
+        while fast is not None and fast.next is not None:
+            fast = fast.next.next
+            slow = slow.next
+            if fast is slow:
+                return True
+        return False
 
     def values(self):
         values = []
