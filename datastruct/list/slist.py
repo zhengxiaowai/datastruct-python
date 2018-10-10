@@ -6,14 +6,7 @@
 """
 
 from datastruct.list.node import SNode
-
-
-class PositionError(Exception):
-    pass
-
-
-class EmptyError(Exception):
-    pass
+from datastruct.list.exceptions import PositionError, EmptyError
 
 
 class SinglyList:

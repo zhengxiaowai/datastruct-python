@@ -4,3 +4,7 @@
 
 class PositionError(Exception):
     pass
+
+
+class EmptyError(Exception):
+    pass
