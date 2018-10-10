@@ -126,6 +126,16 @@ class SinglyList:
 
         return values
 
+    @staticmethod
+    def traverse(head):
+        current_node = head
+        values = []
+        while current_node is not None:
+            values.append(current_node.value)
+            current_node = current_node.next
+
+        return values
+
     def search(self, pos):
         return self.__getitem__(pos)
 
@@ -158,6 +168,50 @@ class SinglyList:
 
         return head1 if head1 is head2 else None
 
+    @staticmethod
+    def merge_lists(l1_head, l2_head):
+        dummy = cur = SNode(0)
+        while l1_head and l2_head:
+            if l1_head.value <= l2_head.value:
+                cur.next = l1_head
+                l1_head = l1_head.next
+            else:
+                cur.next = l2_head
+                l2_head = l2_head.next
+            cur = cur.next
 
+        if l1_head:
+            cur.next = l1_head
 
+        if l2_head:
+            cur.next = l2_head
 
+        return dummy.next
+
+    @staticmethod
+    def remove_nth_from_end(head, n):
+        temp_head = head
+        fast = head
+        slow = head
+
+        while fast is not None and n > -1:
+            fast = fast.next
+            n -= 1
+
+        while fast is not None:
+            fast = fast.next
+            slow = slow.next
+
+        slow.next = slow.next.next
+        return temp_head
+
+    @staticmethod
+    def find_middle(head):
+        fast = head
+        slow = head
+
+        while fast.next is not None and fast.next.next is not None:
+            fast = fast.next.next
+            slow = slow.next
+
+        return slow

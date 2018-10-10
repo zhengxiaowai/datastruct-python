@@ -137,3 +137,24 @@ class TestSList(unittest.TestCase):
         sl2._length = 5
 
         self.assertIs(node3, SinglyList.find_intersection(sl1, sl2))
+
+    def test_merge_lists(self):
+        sl1 = SinglyList([1, 3, 5])
+        sl2 = SinglyList([2, 4, 6, 8, 10])
+
+        new_head = SinglyList.merge_lists(sl1.head, sl2.head)
+        self.assertEqual([1, 2, 3, 4, 5, 6, 8, 10], SinglyList.traverse(new_head))
+
+    def test_remove_eth_elem(self):
+        sl = SinglyList([1, 2, 3, 4, 5])
+        h = SinglyList.remove_nth_from_end(sl.head, 2)
+
+        self.assertEqual([1, 2, 3, 5], SinglyList.traverse(h))
+
+    def test_find_middle(self):
+        sl = SinglyList([1, 2, 3, 4, 5])
+        self.assertEqual(3, SinglyList.find_middle(sl.head).value)
+
+        sl = SinglyList([1, 2, 3, 4, 5, 6])
+        self.assertEqual(3, SinglyList.find_middle(sl.head).value)
+
