@@ -105,3 +105,35 @@ class TestSList(unittest.TestCase):
         sl._length = 6
 
         self.assertEqual(sl.is_loop(), True)
+
+    def test_find_intersection(self):
+        node0 = SNode(0)
+        node11 = SNode(1)
+        node12 = SNode(2)
+        node21 = SNode(1)
+        node22 = SNode(2)
+        node3 = SNode(3)
+        node4 = SNode(4)
+        node5 = SNode(5)
+
+        # 0 - 1(1) - 2(1) - 3 - 4 - 5
+        node0.next = node11
+        node11.next = node12
+        node12.next = node3
+
+        # 1(2) - 2(2) - 3 - 4 - 5
+        node21.next = node22
+        node22.next = node3
+
+        node3.next = node4
+        node4.next = node5
+
+        sl1 = SinglyList()
+        sl1._head = node0
+        sl1._length = 6
+
+        sl2 = SinglyList()
+        sl2._head = node21
+        sl2._length = 5
+
+        self.assertIs(node3, SinglyList.find_intersection(sl1, sl2))

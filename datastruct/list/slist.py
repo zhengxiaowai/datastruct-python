@@ -135,4 +135,29 @@ class SinglyList:
     def delete(self, pos):
         self.__delitem__(pos)
 
+    @staticmethod
+    def find_intersection(list1, list2):
+        diff = len(list1) - len(list2)
+        head1 = list1.head
+        head2 = list2.head
+
+        if diff < 0:
+            # len1 < len2
+            for _ in range(diff*-1):
+                head2 = head2.next
+        elif diff > 0:
+            # len1 > len2
+            for _ in range(diff):
+                head1 = head1.next
+        else:
+            pass
+
+        while head1 is not None and head2 is not None and head1 is not head2:
+            head1 = head1.next
+            head2 = head2.next
+
+        return head1 if head1 is head2 else None
+
+
+
 
