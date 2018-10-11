@@ -4,10 +4,11 @@
 import unittest
 
 from datastruct.tree.bst import pre_order, in_order, post_order, \
-    recur_insert, recur_search, recur_delete, BitNode
+    recur_insert, recur_search, recur_delete, BitNode, min_depth, \
+    max_depth
 
 
-class RecurBST(unittest.TestCase):
+class TestRecurBST(unittest.TestCase):
     def test_pre_order(self):
         n1 = BitNode(10)
         n2 = BitNode(5)
@@ -101,3 +102,25 @@ class RecurBST(unittest.TestCase):
 
         recur_delete(n1, 10)
         self.assertEqual([5, 2, 12, 13, 15, 20, 30], in_order(n1))
+
+
+class TestBSTProperty(unittest.TestCase):
+    def test_depth(self):
+        n1 = BitNode(20)
+        n2 = BitNode(10)
+        n3 = BitNode(30)
+        n4 = BitNode(5)
+        n5 = BitNode(15)
+        n6 = BitNode(2)
+        n7 = BitNode(12)
+
+        n1.left, n1.right = n2, n3
+        n2.left, n2.right = n4, n5
+        n4.left, n4.right = n6, None
+        n5.left, n5.right = n7, None
+
+        self.assertEqual(2, min_depth(n1))
+        self.assertEqual(4, max_depth(n1))
+
+
+

@@ -146,9 +146,26 @@ def recur_delete(root, value):
         return min_node
 
 
+def min_depth(root):
+    if not root:
+        return 0
+
+    left_depth = min_depth(root.left)
+    right_depth = min_depth(root.right)
+    return 1 if (left_depth + right_depth) == 0 else min(left_depth, right_depth) + 1
+
+
+def max_depth(root):
+    if not root:
+        return 0
+
+    return max(max_depth(root.left), max_depth(root.right)) + 1
+
+
 class BST:
     def __init__(self, value=None):
-        self._root = BitNode(value)
+        if value:
+            self._root = BitNode(value)
 
     @property
     def root(self):
